@@ -4,6 +4,18 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import css from './page.module.css';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Not-found",
+  description: "Sorry but this page not-found? plese try again",
+      openGraph:{
+    title: "Note-Hub title",
+    description: "Welcome to Note-Hub title",
+    siteName: "Note-Hub",
+    url: process.env.APP_URL
+  }
+}
 
 export default function NotFound() {
   const router = useRouter();
