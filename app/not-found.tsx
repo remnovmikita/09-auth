@@ -4,17 +4,17 @@ import css from './page.module.css';
 import Link from 'next/link';
 // import RedirectCountdown from '@/components/Not-Found/Not-found.client';
 export const metadata: Metadata = {
-  title: 'Not-foud page',
+  title: 'Not-found page',
   description: 'This page not found',
     openGraph:{
-    title: 'Not-foud page',
-    description: 'This page not found',
+    title: 'Not-found page',
+    description: 'The page you are looking for was not found',
     images:[
       {
         url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg?_gl=1*17o1uiq*_ga*MTk3OTIxMzA4MS4xNzU1NTQyMDgz*_ga_PW0T7S5LDQ*czE3Nzc4MDMyMTkkbzEwMiRnMCR0MTc3NzgwMzIzMyRqNDYkbDAkaDA.",
         width: 1200,
         height: 630,
-        alt: "Note-page"
+        alt: "404 Page Not Found"
       }
     ],
     siteName: "Note-Hub",
