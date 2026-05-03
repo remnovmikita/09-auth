@@ -1,15 +1,15 @@
 import axios from 'axios';
-import type { Note } from '@/types/note';
+import type { Note, Tags } from '@/types/note';
 
 interface NoteResponse {
   notes: Note[];
   totalPages: number;
 }
 
-interface NewNote {
+export interface NewNote {
   title: string;
   content: string;
-  tag: string;
+  tag: Tags;
 }
 
 const API_TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
@@ -38,16 +38,19 @@ export const getNotes = async (
   return response.data;
 };
 
+// FUNCTION CREATE
 export const createNote = async (newNote: NewNote) => {
   const response = await api.post<Note>(`/notes`, newNote);
   return response.data;
 };
 
+// FUNCTION DELETE
 export const deleteNote = async (id: string) => {
   const response = await api.delete<Note>(`/notes/${id}`);
   return response.data;
 };
 
+// FUNCTION BY ID
 export const fetchNoteById = async (id: string) => {
   const response = await api.get<Note>(`/notes/${id}`);
   return response.data;

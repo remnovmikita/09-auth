@@ -6,7 +6,7 @@ import Footer from '@/components/Footer/Footer';
 import TanStackProvider from '../components/TanStackProvider/TanStackProvider';
 
 
-const rodotoFont = Roboto({
+const robotoFont = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
   display: "swap",
@@ -33,7 +33,7 @@ export default function RootLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={rodotoFont.variable}>
+    <html lang="en" className={robotoFont.variable}>
       <body>
         <TanStackProvider>
           <Header />
