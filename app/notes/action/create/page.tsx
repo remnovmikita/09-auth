@@ -4,11 +4,11 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: 'Created notes',
-  description: 'Create notes',
+  title: 'Create Note',
+  description: 'Create a new note',
     openGraph:{
-        title: 'Created notes',
-        description: 'Create our notes',
+            title: 'Create Note',
+            description: 'Create a new note',
         url: "https://08-zustand-two-silk.vercel.app/notes/action/create",
     images:[
       {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   }
 };
 
-export default function createPage(){
+export default function Page(){
     return(
            <main className={css.main}>
         <div className={css.container}>
