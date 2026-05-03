@@ -20,7 +20,7 @@ export const generateMetadata = async ({params}: Props):Promise<Metadata> =>{
     title : `Notes tagged with ${tag}`, 
     description: `Notes filtered by ${tag} categories`,
     siteName: "Note-Hub",
-    url: "https://08-zustand-two-silk.vercel.app/notes/filter/${tag}",
+    url: `https://08-zustand-two-silk.vercel.app/notes/filter/${tag}`,
       images:[
       {
         url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg?_gl=1*17o1uiq*_ga*MTk3OTIxMzA4MS4xNzU1NTQyMDgz*_ga_PW0T7S5LDQ*czE3Nzc4MDMyMTkkbzEwMiRnMCR0MTc3NzgwMzIzMyRqNDYkbDAkaDA.",
