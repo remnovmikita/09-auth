@@ -1,35 +1,41 @@
 import type { Metadata } from 'next';
-import { Roboto} from 'next/font/google';
-import './global.css';
+import { Roboto } from 'next/font/google';
+import './globals.css';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
-import TanStackProvider from '../components/TanStackProvider/TanStackProvider';
-
-
-const robotoFont = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"]
-})
+import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+import AuthProvider from '@/components/AuthProvider/AuthProvider';
+const robotoSans = Roboto({
+  variable: '--font-roboto',
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: 'Title page',
-  description: 'Nates website',
-    openGraph:{
-    title: "Note-Hub title",
-    description: "Welcome to Note-Hub title",
-    images:[
+  title: 'NoteHub',
+  description: 'A simple app to create, manage and organize your notes efficiently.',
+  openGraph: {
+    title: 'NoteHub',
+    description: 'A simple app to create, manage and organize your notes efficiently.',
+    url: 'https://notehub.com/',
+    siteName: 'NoteHub',
+    images: [
       {
-        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg?_gl=1*17o1uiq*_ga*MTk3OTIxMzA4MS4xNzU1NTQyMDgz*_ga_PW0T7S5LDQ*czE3Nzc4MDMyMTkkbzEwMiRnMCR0MTc3NzgwMzIzMyRqNDYkbDAkaDA.",
+        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
         width: 1200,
         height: 630,
-        alt: "Note-page"
-      }
+        alt: 'Notes',
+      },
     ],
-    siteName: "Note-Hub",
-    url: "https://08-zustand-two-silk.vercel.app/"
-  }
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NoteHub',
+    description: 'A simple app to create, manage and organize your notes efficiently.',
+    images: ['https://ac.goit.global/fullstack/react/notehub-og-meta.jpg'],
+  },
 };
 
 export default function RootLayout({
@@ -40,13 +46,18 @@ export default function RootLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={robotoFont.variable}>
+    <html lang="en" className={robotoSans.variable}>
       <body>
         <TanStackProvider>
-          <Header />
-          {children}
-          {modal}
-          <Footer />
+          <AuthProvider>
+            <Header />
+            {children}
+            {modal}
+            <p>
+              Created <time dateTime="2025">2025</time>
+            </p>
+            <Footer />
+          </AuthProvider>
         </TanStackProvider>
       </body>
     </html>

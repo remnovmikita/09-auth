@@ -1,45 +1,50 @@
 'use client';
 
+import css from './ModalId.module.css';
 import { useQuery } from '@tanstack/react-query';
+import { fetchNoteById } from '@/lib/api/clientApi';
+import Loader from '@/app/loading';
 import { useRouter } from 'next/navigation';
+import Modal from '@/components/Modal/Modal';
+import Error from '@/app/error';
 
-import css from './NotePreview.module.css';
-import ModalPreview from '@/components/Modal/Modal';
-import { fetchNoteById } from '@/lib/api';
-
-interface Props {
+type Props = {
   id: string;
-}
-
-export default function NotePreview({ id }: Props) {
-  const router = useRouter();
+};
+export default function NotePreviewClient({ id }: Props) {
   const {
     data: note,
     isLoading,
     isError,
+    error,
   } = useQuery({
     queryKey: ['note', id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
   });
+  const router = useRouter();
+  const close = () => router.back();
 
-  const handleClose = () => router.back();
-
-  if (isLoading) return <p>Loading, please wait...</p>;
-  if (isError || !note) return <p>Something went wrong.</p>;
-
+  if (isLoading) return <Loader />;
+  if (isError) {
+    return <Error error={error} />;
+  }
+  if (!note) return <p className={css.error}>Note not found</p>;
   return (
-    <ModalPreview onClose={handleClose}>
+    <Modal onClose={close}>
+      <button onClick={close} className={css.backBtn}>
+        Close
+      </button>
       <div className={css.container}>
         <div className={css.item}>
           <div className={css.header}>
             <h2>{note.title}</h2>
-            <span className={css.tag}>{note.tag}</span>
           </div>
+          <p className={css.tag}>{note.tag}</p>
           <p className={css.content}>{note.content}</p>
-          <p className={css.date}>{new Date(note.createdAt).toLocaleDateString()}</p>
+          <p className={css.date}>{note.createdAt}</p>
         </div>
       </div>
-    </ModalPreview>
+    </Modal>
   );
 }

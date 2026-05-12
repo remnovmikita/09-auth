@@ -1,35 +1,37 @@
-
 import { Metadata } from 'next';
-import css from './page.module.css';
+import css from './NotFound.module.css';
 import Link from 'next/link';
-// import RedirectCountdown from '@/components/Not-Found/Not-found.client';
+
 export const metadata: Metadata = {
-  title: 'Not-found page',
-  description: 'This page not found',
-    openGraph:{
-    title: 'Not-found page',
-    description: 'The page you are looking for was not found',
-    images:[
+  title: 'Page Not Found',
+  description: 'The page you are looking for does not exist or has been moved.',
+  openGraph: {
+    title: 'Page Not Found',
+    description: 'The page you are looking for does not exist or has been moved.',
+    url: 'https://notehub.com/not-found',
+    siteName: 'NoteHub',
+    images: [
       {
-        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg?_gl=1*17o1uiq*_ga*MTk3OTIxMzA4MS4xNzU1NTQyMDgz*_ga_PW0T7S5LDQ*czE3Nzc4MDMyMTkkbzEwMiRnMCR0MTc3NzgwMzIzMyRqNDYkbDAkaDA.",
+        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
         width: 1200,
         height: 630,
-        alt: "404 Page Not Found"
-      }
+        alt: 'NoteHub - Page Not Found',
+      },
     ],
-    siteName: "Note-Hub",
-    url: "https://08-zustand-two-silk.vercel.app/"
-  }
+  },
+  twitter: {
+    title: 'Page Not Found',
+    description: 'The page you are looking for does not exist or has been moved.',
+    images: ['https://ac.goit.global/fullstack/react/notehub-og-meta.jpg'],
+  },
 };
-
 
 export default function NotFound() {
   return (
-    <div className={css.container}>
+    <div>
       <h1 className={css.title}>404 - Page not found</h1>
-      <p className={css.desc}>Sorry, the page you are looking for does not exist.</p>
-      <Link href="/" className={css.link}>Go back home</Link>
-      {/* <RedirectCountdown /> */}
+      <p className={css.description}>Sorry, the page you are looking for does not exist.</p>
+      <Link href="/">Go back home</Link>
     </div>
   );
 }
